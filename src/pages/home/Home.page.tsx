@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import Loader from "../../components/Loader";
 import Infos from "../../components/Infos";
 import Rock from "../../models/Rock";
+import Satellite from "../../models/Satellite";
 
 const Home = () => {
   const [isRotating, setIsRotating] = useState(false)
@@ -37,9 +38,11 @@ const Home = () => {
         <Infos/>
       
         <Suspense fallback={<Loader/>}>
-          <ambientLight intensity={0.5}/>
-          <spotLight position={[10, 15, 10]} angle={0.3}/>
+          <ambientLight intensity={5}/>
+          {/* <spotLight position={[10, 15, 20]} angle={0.3}/>
+          <hemisphereLight skyColor="#b1e1ff" groundColor="#000000" intensity={1}/> */}
 
+          <Satellite position={[2,2,2]} isRotating={true}/>
           <Rock
             position={islandPosition}
             scale={islandScale}
