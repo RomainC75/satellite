@@ -20,6 +20,7 @@ const Satellite = ({isRotating, ...props}) => {
   return (
     <mesh {...props} ref={ref}>
         <primitive object={scene} />
+        <meshStandardMaterial metalness={1}/>
     </mesh>
   )
 }

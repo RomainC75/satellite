@@ -14,8 +14,8 @@ const Rock = (props: IRockProps) => {
   return (
     <group {...props} dispose={null}>
       <mesh
-        castShadow
-        receiveShadow
+        // castShadow
+        // receiveShadow
         geometry={nodes.Object_5.geometry}
         material={materials.MoonRock2}
         // position={[-2.3, -15.27, -38.2]}
