@@ -8,7 +8,7 @@ import ApolloSample from "../../models/ApolloSample";
 import StationA12 from "../../models/StationA12";
 import { useControls } from "leva";
 import type * as THREE from "three";
-import { Stars } from "@react-three/drei";
+import { Sky, Stars } from "@react-three/drei";
 import StarsAnimation from "../../models/StarsAnimation";
 
 const Home = () => {
@@ -92,7 +92,7 @@ const Home = () => {
         className={`w-full h-screen bg-transparent ${
           isRotating ? "cursor-grabbing" : "cursor-grab"
         }`}
-        camera={{ near: 0.1, far: 2000 }}
+        camera={{ near: 0.1, far: 2000, position: [0, 0, 12] }}
         style={{ background: "#000000" }}
         shadows
       >
@@ -116,9 +116,9 @@ const Home = () => {
           {/* <ApolloSample position={islandPosition}
             scale={islandScale}
             rotation={islandRotation}/> */}
-          <StationA12 position={[0, 0, 0]} scale={[0.5,0.5,0.5]} rotation={[0.5, 0, 0]}/>
+          <StationA12 position={[0, 0, 0]} scale={[1.2,1.2,1.2]} rotation={[0.5, 0, 0]}/>
           <StarsAnimation/>
-
+            {/* <Sky rayleigh={0.0001}/> */}
           <Satellite/>
 
         </Suspense>

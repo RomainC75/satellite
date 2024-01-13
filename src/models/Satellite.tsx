@@ -22,8 +22,8 @@ const Satellite = ({ ...props}) => {
       const elapsedTime = state.clock.elapsedTime
       const ROTATION_SPEED = 2
       ref.current.rotation.y += 0.03 * delta;
-      ref.current.position.x = 4 * Math.sin(elapsedTime/ROTATION_SPEED);
-      ref.current.position.y = 4 * Math.cos(elapsedTime/ROTATION_SPEED);
+      ref.current.position.x = 8 * Math.sin(elapsedTime/ROTATION_SPEED);
+      ref.current.position.y = 8 * Math.cos(elapsedTime/ROTATION_SPEED);
       ref.current.position.z = -1.5 * Math.sin(elapsedTime/ROTATION_SPEED);
     })
 
