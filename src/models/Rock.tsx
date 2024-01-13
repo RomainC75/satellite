@@ -1,7 +1,8 @@
 import { useGLTF } from "@react-three/drei";
 import rockScene from "../assets/3d/moon_rock.glb";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { useRef } from "react";
+import { TextureLoader } from "three";
 
 interface IRockProps {
   position: [number, number, number];
@@ -13,7 +14,11 @@ interface IRockProps {
 
 const Rock = (props: IRockProps) => {
   const { nodes, materials } = useGLTF(rockScene);
+  const groundTexture = useLoader(TextureLoader, 'moon-ground.jpg')
   const ref = useRef();
+  const material = materials.MoonRock2;
+  material.transparent = true;
+material.opacity = 0.1;
 
   useFrame((_, delta) => {
     ref.current.rotation.y += 0.25 * delta;
@@ -36,6 +41,7 @@ const Rock = (props: IRockProps) => {
         color={"grey"} 
         opacity={1}
         transparent={false}
+        map={groundTexture}
       />
     </group>
   );
