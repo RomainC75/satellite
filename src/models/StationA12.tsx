@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import stationScene from "../assets/3d/stationa12.glb";
 import { useFrame, useThree } from "@react-three/fiber";
-import Satellite from "./Satellite";
-import { Group } from "three";
-import { isRef } from "@react-three/fiber/dist/declarations/src/core/utils";
 
 const StationA12 = (props) => {
   const group = useRef();
@@ -16,7 +13,6 @@ const StationA12 = (props) => {
 
   const lastX = useRef(0);
     const rotationSpeed = useRef(0);
-    const dampingFactor = 0.95;
 
   useFrame((state, delta) => {
     if(isRotating){
@@ -31,7 +27,7 @@ const StationA12 = (props) => {
     const clientX = event.touches ? 
             event.touches[0].clientX : 
             event.clientX;
-        lastX.current = clientX;
+    lastX.current = clientX;
   };
 
   const handlePointerUp = (e) => {
@@ -45,11 +41,10 @@ const StationA12 = (props) => {
         const clientX = event.touches ? 
             event.touches[0].clientX : 
             event.clientX;
-            const delta = (clientX - lastX.current) / viewport.width;
+        const delta = (clientX - lastX.current) / viewport.width;
 
-            group.current.rotation.y += delta * 0.01 * Math.PI
-            lastX.current = clientX;
-            rotationSpeed.current = delta * 0.01 * Math.PI;
+        group.current.rotation.y += delta * 0.01 * Math.PI
+        lastX.current = clientX;
     }
   }
 

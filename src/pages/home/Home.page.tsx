@@ -58,7 +58,7 @@ const Home = () => {
         max: 1000,
       },
       light2Position: {
-        value: [3, -3, 2.2],
+        value: [4, -2.9, 5.7],
         step: 0.1,
         min: -40,
         max: 40,

@@ -9,18 +9,9 @@ const Satellite = ({ ...props}) => {
     const { scene, animations } = useGLTF(satelliteScene);
     const {actions} = useAnimations(animations, ref);
 
-    // useEffect(()=>{
-    //     console.log("=<><", isRotating)
-    //     if(isRotating){
-    //         actions['Take 001'].play();
-    //     }else {
-    //         actions['Take 001'].stop();
-    //     }
-    // }, [actions, isRotating])
-
     useFrame((state, delta) => {
       const elapsedTime = state.clock.elapsedTime
-      const ROTATION_SPEED = 2
+      const ROTATION_SPEED = 8
       ref.current.rotation.y += 0.03 * delta;
       ref.current.position.x = 8 * Math.sin(elapsedTime/ROTATION_SPEED);
       ref.current.position.y = 8 * Math.cos(elapsedTime/ROTATION_SPEED);
