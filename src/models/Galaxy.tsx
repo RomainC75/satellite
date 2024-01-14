@@ -21,12 +21,10 @@ const Galaxy = ({isRotating}) => {
     useFrame((state, delta) => {
         // if(isRotating){
             ref.current.rotation.z += 0.05 * delta;
-
-            const elapsedTime = state.clock.elapsedTime
+            const elapsedTime = state.clock.elapsedTime;
             // const ROTATION_SPEED = 2
             // ref.current.position.x = 2 * Math.sin(elapsedTime/ROTATION_SPEED);
             // ref.current.position.y = 2 * Math.cos(elapsedTime/ROTATION_SPEED);
-
         // }
     })
     

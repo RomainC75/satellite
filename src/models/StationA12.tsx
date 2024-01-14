@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import stationScene from "../assets/3d/stationa12.glb";
 import { useFrame, useThree } from "@react-three/fiber";
@@ -9,14 +9,14 @@ const StationA12 = (props) => {
   const { nodes, materials, animations } = useGLTF(stationScene);
   const { actions } = useAnimations(animations, group);
   const [isRotating, setIsRotating] = useState(true);
-    const [isPointerDown, setIsPointerDown] = useState(false);
+  const [isPointerDown, setIsPointerDown] = useState(false);
 
   const lastX = useRef(0);
-    const rotationSpeed = useRef(0);
+  const rotationSpeed = useRef(0);
 
   useFrame((state, delta) => {
-    if(isRotating){
-        group.current.rotation.y -= 0.03 * delta;
+    if (isRotating) {
+      group.current.rotation.y -= 0.03 * delta;
     }
   });
 
@@ -24,9 +24,7 @@ const StationA12 = (props) => {
     e.stopPropagation();
     setIsRotating(false);
     setIsPointerDown(true);
-    const clientX = event.touches ? 
-            event.touches[0].clientX : 
-            event.clientX;
+    const clientX = event.touches ? event.touches[0].clientX : event.clientX;
     lastX.current = clientX;
   };
 
@@ -37,16 +35,14 @@ const StationA12 = (props) => {
   };
 
   const handlePointerMove = (e) => {
-    if(isPointerDown){
-        const clientX = event.touches ? 
-            event.touches[0].clientX : 
-            event.clientX;
-        const delta = (clientX - lastX.current) / viewport.width;
+    if (isPointerDown) {
+      const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+      const delta = (clientX - lastX.current) / viewport.width;
 
-        group.current.rotation.y += delta * 0.01 * Math.PI
-        lastX.current = clientX;
+      group.current.rotation.y += delta * 0.01 * Math.PI;
+      lastX.current = clientX;
     }
-  }
+  };
 
   useEffect(() => {
     const canvas = gl.domElement;

@@ -13,9 +13,8 @@ import StarsAnimation from "../../models/StarsAnimation";
 
 const Home = () => {
   const [isRotating, setIsRotating] = useState(false);
-  const lightRef = useRef();
-  const satelliteGroupeRef = useRef<THREE.Group>();
-
+  const [step, setStep] = useState(0);
+  
   const adjustRockForScreenSize = (): [
     [number, number, number],
     [number, number, number],
@@ -100,17 +99,12 @@ const Home = () => {
         <Infos />
 
         <Suspense fallback={<Loader />}>
-          <ambientLight intensity={5} />
+          <ambientLight intensity={2} />
           <pointLight position={light1Position} intensity={light1Intensity} color={"#FFECA6"}/>
-          // 5,15,-5 // 1000
-          // -2, 18, 10 // 1000
           <pointLight position={light2Position} intensity={light2Intensity} color={"white"}/>
-
           <pointLight position={light3Position} intensity={light3Intensity} color={"#A6EBFF"}/>
-          
           {/* <directionalLight position={lightPosition} rotation={lightDirection} intensity={lightIntensity}/> */}
           {/* <hemisphereLight skyColor="#ffffff" groundColor="#000000" intensity={1}/> */}
-
           
           <Galaxy/>
           {/* <ApolloSample position={islandPosition}
